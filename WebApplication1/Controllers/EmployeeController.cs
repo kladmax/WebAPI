@@ -20,7 +20,7 @@ namespace WebApplication1.Controllers
             string query = @"
                     select EmployeeId,EmployeeName,Department,
                     convert(varchar(10),DateOfJoining,120) as DateOfJoining,
-                    PhotoFilename
+                    PhotoFileName
                     from
                     dbo.Employee
                     ";
