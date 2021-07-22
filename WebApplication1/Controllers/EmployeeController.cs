@@ -14,7 +14,6 @@ namespace WebApplication1.Controllers
 {
     public class EmployeeController : ApiController
     {
-
         public HttpResponseMessage Get()
         {
             string query = @"
@@ -52,6 +51,7 @@ namespace WebApplication1.Controllers
                     ,'" + emp.PhotoFileName + @"'
                     )
                     ";
+
                 DataTable table = new DataTable();
                 using (var con = new SqlConnection(ConfigurationManager.
                     ConnectionStrings["EmployeeAppDB"].ConnectionString))
@@ -62,15 +62,15 @@ namespace WebApplication1.Controllers
                     da.Fill(table);
                 }
 
-                return "Added Successfully!!!";
+                return "Added Successfully!!";
             }
             catch (Exception)
             {
 
-                return "Failed to Add!!!";
+                return "Failed to Add!!";
             }
-
         }
+
 
         public string Put(Employee emp)
         {
@@ -84,6 +84,7 @@ namespace WebApplication1.Controllers
                     ,PhotoFileName='" + emp.PhotoFileName + @"'
                     where EmployeeId=" + emp.EmployeeId + @"
                     ";
+
                 DataTable table = new DataTable();
                 using (var con = new SqlConnection(ConfigurationManager.
                     ConnectionStrings["EmployeeAppDB"].ConnectionString))
@@ -94,24 +95,25 @@ namespace WebApplication1.Controllers
                     da.Fill(table);
                 }
 
-                return "Updated Successfully!!!";
+                return "Updated Successfully!!";
             }
             catch (Exception)
             {
 
-                return "Failed to Update!!!";
+                return "Failed to Update!!";
             }
-
         }
+
 
         public string Delete(int id)
         {
             try
             {
                 string query = @"
-                    delete from dbo.Employee
+                    delete from dbo.Employee 
                     where EmployeeId=" + id + @"
                     ";
+
                 DataTable table = new DataTable();
                 using (var con = new SqlConnection(ConfigurationManager.
                     ConnectionStrings["EmployeeAppDB"].ConnectionString))
@@ -122,22 +124,19 @@ namespace WebApplication1.Controllers
                     da.Fill(table);
                 }
 
-                return "Deleted Successfully!!!";
+                return "Deleted Successfully!!";
             }
             catch (Exception)
             {
 
-                return "Failed to Delete!!!";
+                return "Failed to Delete!!";
             }
-
         }
 
         [Route("api/Employee/GetAllDepartmentNames")]
         [HttpGet]
-
         public HttpResponseMessage GetAllDepartmentNames()
         {
-
             string query = @"
                     select DepartmentName from dbo.Department";
 
@@ -155,8 +154,6 @@ namespace WebApplication1.Controllers
         }
 
         [Route("api/Employee/SaveFile")]
-
-
         public string SaveFile()
         {
             try
@@ -172,6 +169,7 @@ namespace WebApplication1.Controllers
             }
             catch (Exception)
             {
+
                 return "anonymous.png";
             }
         }
